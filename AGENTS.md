@@ -48,9 +48,13 @@ Ao alterar um agente:
 
 Transforma uma tarefa em plano mínimo. O Orquestrador não deve mandar toda tarefa aos três agentes por reflexo.
 
+### `orchestrator/agent.py`
+
+Executor de cada funcionário. Concentra o loop da Responses API, function calling, permissões de ferramentas e contabilização de uso/custo. Não coloque prompts jurídicos extensos aqui; eles pertencem aos `SKILL.md`.
+
 ### `orchestrator/workflow.py`
 
-Motor do fluxo. É responsável por tool calling, handoffs, estados reais, uso/custo, rejeição e revision loop. Não introduza progresso fictício neste arquivo.
+Motor do fluxo entre funcionários. É responsável por handoffs, estados reais, persistência das entregas, rejeição do Sênior e revision loop. Não introduza progresso fictício neste arquivo.
 
 ### `orchestrator/handoff.py`
 
