@@ -1,0 +1,18 @@
+{
+  "background": "#171b22",
+  "floor": "#2b313a",
+  "wall": "#11151b",
+  "desk": "#765b45",
+  "desk_edge": "#49382c",
+  "monitor": "#1e2732",
+  "monitor_screen": "#8fb3c9",
+  "paper": "#d7d4ca",
+  "plant": "#516b55",
+  "text": "#e7e2d7",
+  "muted": "#9aa3ad",
+  "accent": "#5aa7d8",
+  "success": "#6ca36c",
+  "warning": "#c5a35a",
+  "danger": "#b66060",
+  "idle": "#7e8790"
+}

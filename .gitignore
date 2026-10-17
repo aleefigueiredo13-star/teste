@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.env
+.DS_Store
+
+# Runtime data may contain privileged/confidential legal material.
+workspace/processos/*
+workspace/tarefas/*
+workspace/outputs/*
+logs/*.jsonl
+!workspace/processos/.gitkeep
+!workspace/tarefas/.gitkeep
+!workspace/outputs/.gitkeep
+!logs/.gitkeep
