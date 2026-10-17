@@ -14,7 +14,7 @@ Pixel Legal Office é um escritório jurídico virtual local-first em Python. Os
 - permite `REJECT` do Sênior, revisão do Júnior e nova análise, com limite de ciclos;
 - salva JSON e Markdown de todas as entregas;
 - registra atividade real em `logs/activity.jsonl`;
-- registra tokens, cached tokens, modelo e estimativa de custo;
+- registra tokens, cached tokens, cache-write tokens, modelo e estimativa de custo;
 - mantém o estado no filesystem para que reiniciar o programa não apague a tarefa;
 - permite conversar diretamente com cada funcionário sobre a tarefa selecionada.
 
@@ -72,6 +72,7 @@ legal-pixel-office/
 │   └── senior/SKILL.md
 ├── orchestrator/
 │   ├── router.py
+│   ├── agent.py
 │   ├── workflow.py
 │   └── handoff.py
 ├── tools/
@@ -151,6 +152,7 @@ Cada agente registra no `task.json`:
 - `input_tokens`;
 - `output_tokens`;
 - `cached_tokens`;
+- `cache_write_tokens`;
 - `model`;
 - `estimated_cost`;
 - chamadas auxiliares de web/legal search, quando existirem.
@@ -167,7 +169,7 @@ A suíte cobre parsing, criação de tarefas, execução com tool calling, hando
 
 ## Escolhas da API OpenAI
 
-O MVP usa a SDK oficial Python e a Responses API. Para tools próprias, segue o loop oficial de function calling. Como `store=False`, os itens retornados pela resposta — inclusive reasoning items criptografados — são preservados e reenviados durante a mesma execução. Structured Outputs usa `text.format` com JSON Schema.
+O MVP usa a SDK oficial Python e a Responses API. `orchestrator/agent.py` concentra o loop de function calling e as permissões das ferramentas; `orchestrator/workflow.py` coordena handoffs, rejeições e persistência. Como `store=False`, os itens retornados pela resposta — inclusive reasoning items criptografados — são preservados e reenviados durante a mesma execução. Structured Outputs usa `text.format` com JSON Schema.
 
 Referências oficiais consultadas na implementação:
 
